@@ -1,52 +1,47 @@
 # TimesGet
 
-This repository for code demonstration purpose.
+This repository for code demonstration purpose only!!!
 
-## Getting Started
+## Description
 
-1. In pubspec.yml
-    - reset build to 1.0.0+1
-    - change description
-2. Run `flutter packages get`
-3. Replace assets/images
-4. Update app's config in lib/config
-5. Update app's colors in lib/config
-6. Update locale/*.json
-7. Add .env
-8. Add Git remote
+This one app of many apps for <https://www.timesget.ru>
 
-## iOS
+## Links to apps
 
-1. Open XCode
-2. Rename App
-3. Add Sign App in XCode
-4. Add GoogleService-Info.plist in XCode
-5. Replace App Icon
-   - Splash screen: center center and 1/2 screen width.
-   - Launch screen: Add image on LaunchScreen.storyboard
-6. Add Google Map Api Key in ios/Runner/AppDelegate.swift
-7. Push Notifications
-   - Read <https://pub.dev/packages/firebase_messaging>
-   - Add or Use already Auth Key
-   - Add .p8 in Firebase
-8. Build and run locally
-9. Release <https://flutter.dev/docs/deployment/ios>
+<https://apps.apple.com/us/app/cross-fit-family/id1485788438?ls=1>
+<https://play.google.com/store/apps/details?id=com.timesget.crossfitfamily>
 
-## Android
+## DEMO videos
 
-1. Replace the previous applicationId
-   - android/app/build.gradle
-   - android/app/src/main/kotlin/com/timesget/{APP_BUNDLE}/MainActivity.kt
-2. Update App name
-   - in every AndroidManifest.xml and change label
-3. Rename folder in app/src/main/kotlin/com/...
-4. Update package in app/src/main/kotlin/com/.../MainActivity.kt
-5. Replace App Icon
-   - icons: copy mipmaps folders
-6. Add google-services.json into android/app
-7. Add Google Map Api Key in android/app/src/main/AndroidManifest.xml
-8. Signing tha app for release by
-`keytool -genkey -v -keystore ~/key-timesget-{APP_BUNDLE}.jks -keyalg RSA -keysize 2048 -validity 10000 -alias timesget.{APP_BUNDLE}`
-9. Add android/key.properties
-10. Run the app localy
-11. Build appbundle `flutter build appbundle` or apk `flutter build apk`
+### Admin website
+<https://youtu.be/14fc_Rub_1U>
+
+## Technical description
+
+### Global State Management
+
+Для Global State Management в проекте используются следующие механизмы: 
+Singleton + RxDart + BehaviourSubject
+
+Например UserService
+
+![alt text](./assets/1.png?raw=true)
+![alt text](./assets/2.png?raw=true)
+![alt text](./assets/3.png?raw=true)
+
+Firebase
+InheritedWidget + Bloc (см. models/city_provider.dart models/city_block.dart) - там можете посмотреть на то как я использую Reactive programming в случае, когда нужно вывести badge с количеством обновлени
+
+
+Сложные моменты которые предстояло реализовать:
+
+Бейджи, которые показывали бы обновления в приложении, т.к. Новые карты, новые новости, подтвержденные или отклоненные записи (букинги)
+Реализовано Push Notification
+Реализован механизм и календарь записи на прием с учетом уже забронированных даты и времени в real-time  с помощью Fireabse
+Real-time на UI такие как добавление нового комментария, обновление рейтинга и прочее
+
+Анимации сложной и крутой нет. Есть простая в pages/splash_screen.dart
+
+Весь проект писал сам. Бэкэнд на Firebase Database, Storage и Cloud functions. + Фронт - Angular 8 для админов и менеджеров.
+
+
